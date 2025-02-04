@@ -75,13 +75,13 @@ const ProductCard = ({ item }) => (
     <Text style={{ fontSize: 10, color: '#666', marginTop: 5, fontWeight: "bold", borderWidth: 0.2, alignSelf: "baseline", padding: 5, borderRadius: 10, backgroundColor: "#fff" }}>MRP: {item.mrp}</Text>
         {/* Pack & Margin Labels */}
         <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginBottom: 10, marginTop: 20 }}>
-      <Text style={{ backgroundColor: '#EAF1FF', padding: 5, borderRadius: 5, fontSize: 12, color: '#2A5EE8', fontWeight: "bold" }}>Pack 30</Text>
-      <Text style={{ backgroundColor: '#EAF1FF', padding: 5, borderRadius: 5, fontSize: 12, color: '#2A5EE8', fontWeight: "bold" }}>Margin {item.margin}</Text>
+      <Text style={{ backgroundColor: '#EAF1FF', padding: 5, borderRadius: 5, fontSize: 12, color: '#404165', fontWeight: "bold" }}>Pack 30</Text>
+      <Text style={{ backgroundColor: '#EAF1FF', padding: 5, borderRadius: 5, fontSize: 12, color: '#404165', fontWeight: "bold" }}>Margin {item.margin}</Text>
     </View>
-    <Text style={{ fontSize: 16, fontWeight: '500' }} numberOfLines={1} ellipsizeMode="tail">{item.name}</Text>
+    <Text style={{ fontSize: 14, fontWeight: '500' }} numberOfLines={1} ellipsizeMode="tail">{item.name}</Text>
     <Text style={{ fontSize: 14, color: '#666' }}>{item.volume}</Text>
     <View style={{ flexDirection: 'row', justifyContent: 'space-between', marginVertical: 5 }}>
-      <Text style={{ fontSize: 16, fontWeight: 'bold', color: '#000' }}>₹{item.price} <Text style={{ textDecorationLine: 'line-through', color: '#888' }}>₹{item.originalPrice}</Text></Text>
+      <Text style={{ fontSize: 14, fontWeight: 'bold', color: '#000' }}>₹{item.price} <Text style={{ textDecorationLine: 'line-through', color: '#888', fontWeight: "400" }}>₹{item.originalPrice}</Text></Text>
     </View>
 
     {/* Add or Pack Button & Delete Icon */}
