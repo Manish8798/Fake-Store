@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { View, Text, TouchableOpacity, SafeAreaView, StyleSheet, ScrollView } from "react-native";
 import SearchBar from "../components/SearchBar";
 import ProductList from "../components/ProductList";
+import ProductGrid from "../components/ProductGrid";
 
 const HomeScreen = ({ navigation }) => {
 
@@ -17,6 +18,7 @@ const HomeScreen = ({ navigation }) => {
            </View>
            <ProductList/>
            <Text style={[styles.heading, { paddingHorizontal: 15}]}>Trending in your area</Text>
+           <ProductGrid />
            </ScrollView>
         </SafeAreaView>
     );
