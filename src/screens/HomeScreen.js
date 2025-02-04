@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, Text, TouchableOpacity, SafeAreaView, StyleSheet } from "react-native";
+import { View, Text, TouchableOpacity, SafeAreaView, StyleSheet, ScrollView } from "react-native";
 import SearchBar from "../components/SearchBar";
 import ProductList from "../components/ProductList";
 
@@ -8,6 +8,7 @@ const HomeScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
            <SearchBar />
+           <ScrollView>
            <View style={styles.hStack}>
              <Text style={styles.heading}>Explore by Categories</Text>
              <TouchableOpacity>
@@ -15,6 +16,8 @@ const HomeScreen = ({ navigation }) => {
              </TouchableOpacity>
            </View>
            <ProductList/>
+           <Text style={[styles.heading, { paddingHorizontal: 15}]}>Trending in your area</Text>
+           </ScrollView>
         </SafeAreaView>
     );
 };  

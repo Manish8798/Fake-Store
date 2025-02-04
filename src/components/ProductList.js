@@ -11,9 +11,11 @@ const categories = [
 ];
 
 const CategoryItem = ({ item }) => (
+<View style={{paddingBottom: 20}}>
   <View style={styles.itemContainer}>
     <Image source={item.image} style={styles.itemImage} />
-    {/* <Text style={styles.itemText}>{item.name}</Text> */}
+  </View>
+      <Text style={styles.itemText}>{item.name}</Text>
   </View>
 );
 
@@ -25,6 +27,7 @@ const ProductList = () => {
       renderItem={({ item }) => <CategoryItem item={item} />}
       numColumns={3}
       contentContainerStyle={styles.listContainer}
+      disableVirtualization
     />
   );
 };
@@ -49,9 +52,14 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   itemText: {
-    fontSize: 16,
-    marginTop: 8,
+    fontSize: 12,
+    marginTop: 2,
     textAlign: 'center',
+    color: "#000",
+    opacity: 0.65,
+    paddingHorizontal: 8,
+    width: 99,
+    fontWeight: "500"
   },
 });
 
