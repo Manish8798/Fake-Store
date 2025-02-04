@@ -9,7 +9,7 @@ const HomeScreen = ({ navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
            <SearchBar />
-           <ScrollView>
+           <ScrollView contentContainerStyle={{paddingBottom: 80}}>
            <View style={styles.hStack}>
              <Text style={styles.heading}>Explore by Categories</Text>
              <TouchableOpacity>
