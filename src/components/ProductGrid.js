@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, Image, FlatList, TouchableOpacity } from 'react-native';
+import { View, Text, Image, FlatList, TouchableOpacity, Platform } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather';
 
 const products = [
@@ -66,8 +66,8 @@ const ProductCard = ({ item }) => (
     {/* Discount Badge */}
     {item.discount && (
       <View style={{}}>
-        <Image source={require("../assets/images/discount.png")} style={{position: "absolute", top: -12, right: 0, width: 38, height: 33}} />
-        <Text style={{ color: '#fff', fontSize: 8, position: "absolute", top: -2, right: 4, fontWeight: "bold" }}>{item.discount}</Text>
+        <Image source={require("../assets/images/discount.png")} style={{position: "absolute", top: -12, right: Platform.OS === 'android' ? 5 : 0, width: 38, height: 33}} />
+        <Text style={{ color: '#fff', fontSize: 8, position: "absolute", top: -2, right: Platform.OS === 'android' ? 10 : 4, fontWeight: "bold" }}>{item.discount}</Text>
       </View>
     )}
     {/* Product Image */}

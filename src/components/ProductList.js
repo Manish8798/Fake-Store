@@ -41,7 +41,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#f2f2f2',
     padding: 1,
     borderRadius: 8,
-    marginHorizontal: 8,
+    marginHorizontal: 10,
     marginVertical: 8,
     alignItems: 'center',
     flex: 1/3,
