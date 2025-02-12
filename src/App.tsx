@@ -1,6 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet, Platform} from 'react-native';
-import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createStackNavigator } from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
@@ -9,8 +10,10 @@ import FairdealsScreen from './screens/FairdealsScreen';
 import CategoriesScreen from './screens/CategoriesScreen';
 import ReorderScreen from './screens/ReorderScreen';
 import WalletScreen from './screens/WalletScreen';
+import Health from './screens/Health';
 
 const Tab = createBottomTabNavigator();
+const Stack = createStackNavigator();
 
 const CustomTabBarButton = ({ children, onPress }) => (
   <TouchableOpacity style={styles.customButtonContainer} onPress={onPress}>
@@ -27,6 +30,14 @@ const CustomTabBarButton = ({ children, onPress }) => (
   </TouchableOpacity>
 );
 
+const HomeStack = () => {
+  return (
+    <Stack.Navigator screenOptions={{ headerShown: false }}>
+      <Stack.Screen name="HomeMain" component={HomeScreen} />
+      <Stack.Screen name="Health" component={Health} />
+    </Stack.Navigator>
+  );
+};
 
 const App = () => {
   return (
@@ -59,10 +70,10 @@ const App = () => {
               <Feather name={iconName} size={size} color={color} />
             );
           },
-          tabBarActiveTintColor: '#4286f4',
+          tabBarActiveTintColor: '#2070F0',
           tabBarInactiveTintColor: '#666',
         })}>
-        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Home" component={HomeStack} />
         <Tab.Screen name="Claims" component={CategoriesScreen} />
         <Tab.Screen
           name="Policies"
