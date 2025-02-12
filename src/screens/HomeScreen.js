@@ -1,59 +1,133 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {
   View,
   Text,
-  TouchableOpacity,
-  SafeAreaView,
+  FlatList,
   StyleSheet,
-  ScrollView,
+  SafeAreaView,
+  Image,
 } from 'react-native';
-import SearchBar from '../components/SearchBar';
-import ProductList from '../components/ProductList';
-import ProductGrid from '../components/ProductGrid';
+import Icon from 'react-native-vector-icons/FontAwesome5';
+
+const data = [
+  {
+    id: '1',
+    title: '₹ 5 Lakhs Health Cover @ ₹8/day*',
+    subtitle: 'Health Insurance',
+    icon: 'heartbeat',
+    color: '#C3E5FF',
+  },
+  {
+    id: '2',
+    title: 'Early Term Insurance is a Smart Choice',
+    subtitle: 'Term Life Insurance',
+    icon: 'umbrella',
+    color: '#D3D3FF',
+  },
+  {
+    id: '3',
+    title: 'Save tax with these 5 products',
+    subtitle: 'Investment Blog',
+    icon: 'piggy-bank',
+    color: '#FFD3C3',
+  },
+  {
+    id: '4',
+    title: 'Plans for Commercial Taxi',
+    subtitle: 'Car Insurance',
+    icon: 'car',
+    color: '#333540',
+    textColor: '#fff',
+  },
+  {
+    id: '5',
+    title: 'Comprehensive health plans for your parent',
+    subtitle: 'Health Insurance',
+    icon: 'user-md',
+    color: '#FFF3C3',
+  },
+  {
+    id: '6',
+    title: 'Now, you can insure your spouse as well',
+    subtitle: 'Term Life Insurance',
+    icon: 'users',
+    color: '#E3D3FF',
+  },
+];
 
 const HomeScreen = ({navigation}) => {
+  const renderItem = ({item}) => (
+    <View
+      style={[styles.card, {backgroundColor: item.color, height: item.height}]}>
+      <Icon
+        name={item.icon}
+        size={30}
+        color={item.textColor || '#333'}
+        style={styles.icon}
+      />
+      <Text style={[styles.subtitle, {color: item.textColor || '#666'}]}>
+        {item.subtitle}
+      </Text>
+      <Text style={[styles.title, {color: item.textColor || '#000'}]}>
+        {item.title}
+      </Text>
+      <Image
+        source={require('../assets/images/placeholder.png')}
+        resizeMode="contain"
+        style={{
+          width: 200,
+          height: 100,
+          paddingTop: 20,
+        }}
+      />
+    </View>
+  );
+
   return (
-    <SafeAreaView style={styles.container}>
-      <SearchBar />
-      <ScrollView contentContainerStyle={{paddingBottom: 80}}>
-        <View style={styles.hStack}>
-          <Text style={styles.heading}>Explore by Categories</Text>
-          <TouchableOpacity>
-            <Text style={styles.seeAll}>See All > </Text>
-          </TouchableOpacity>
-        </View>
-        <View style={{alignItems: 'center'}}>
-          <ProductList />
-        </View>
-        <Text style={[styles.heading, {paddingHorizontal: 15}]}>
-          Trending in your area
-        </Text>
-        <ProductGrid />
-      </ScrollView>
+    <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
+      <FlatList
+        data={data}
+        keyExtractor={item => item.id}
+        numColumns={2} // Creates a grid-like structure
+        renderItem={renderItem}
+        contentContainerStyle={styles.listContainer}
+        showsVerticalScrollIndicator={false}
+      />
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
+  listContainer: {
+    paddingHorizontal: 10,
+    paddingBottom: 100,
     backgroundColor: '#fff',
   },
-  hStack: {
-    flexDirection: 'row',
+  card: {
+    flex: 1,
+    marginHorizontal: 10,
+    paddingHorizontal: 25,
+    borderRadius: 20,
     justifyContent: 'space-between',
-    alignItems: 'center',
-    paddingHorizontal: 15,
-    marginTop: 10,
+    elevation: 5,
+    marginVertical: 20,
+    paddingTop: 20,
+    paddingBottom: 2,
   },
-  heading: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#1D1E29',
+  icon: {
+    alignSelf: 'flex-start',
+    marginBottom: 5,
   },
-  seeAll: {
-    color: '#8B8C99',
+  subtitle: {
+    fontSize: 12,
     fontWeight: 'bold',
+    textTransform: 'uppercase',
+    paddingVertical: 10,
+  },
+  title: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    paddingVertical: 10,
   },
 });
 
