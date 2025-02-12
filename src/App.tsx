@@ -2,7 +2,8 @@ import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet, Platform} from 'react-native';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {NavigationContainer} from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Feather';
+import Icon from 'react-native-vector-icons/FontAwesome';
+import Feather from 'react-native-vector-icons/Feather';
 import HomeScreen from './screens/HomeScreen';
 import FairdealsScreen from './screens/FairdealsScreen';
 import CategoriesScreen from './screens/CategoriesScreen';
@@ -11,11 +12,21 @@ import WalletScreen from './screens/WalletScreen';
 
 const Tab = createBottomTabNavigator();
 
-const CustomTabBarButton = ({children, onPress}) => (
+const CustomTabBarButton = ({ children, onPress }) => (
   <TouchableOpacity style={styles.customButtonContainer} onPress={onPress}>
-    <View style={styles.customButton}>{children}</View>
+    <View style={styles.hexagonContainer}>
+      <View style={styles.hexagon}>
+        <View style={styles.hexagonInner}>
+          <Icon name="list" size={20} color="#fff" />
+        </View>
+        <View style={styles.hexagonBefore} />
+        <View style={styles.hexagonAfter} />
+      </View>
+    </View>
+    <Text style={styles.customButtonText}>Policies</Text>
   </TouchableOpacity>
 );
+
 
 const App = () => {
   return (
@@ -29,94 +40,102 @@ const App = () => {
           tabBarIcon: ({focused, color, size}) => {
             let iconName;
             switch (route.name) {
-              case 'Fairdeals':
-                iconName = 'link';
+              case 'Home':
+                iconName = 'home';
                 break;
-              case 'Categories':
-                iconName = 'grid';
+              case 'Claims':
+                iconName = 'flag';
                 break;
-              case 'Reorder':
-                iconName = 'rotate-cw';
+              case 'Account':
+                iconName = 'user';
                 break;
-              case 'Wallet':
-                iconName = 'credit-card';
+              case 'Help':
+                iconName = 'help-with-circle';
                 break;
             }
-            return <Icon name={iconName} size={size} color={color} />;
+            return focused ? (
+              <Icon name={iconName} size={size} color={color} />
+            ) : (
+              <Feather name={iconName} size={size} color={color} />
+            );
           },
-          tabBarActiveTintColor: '#404165',
+          tabBarActiveTintColor: '#4286f4',
           tabBarInactiveTintColor: '#666',
         })}>
-        {/* <Tab.Screen name="Fairdeals" component={HomeScreen} />
-        <Tab.Screen name="Categories" component={CategoriesScreen}
-          options={{
-            tabBarButton: (props) => (
-              <CustomTabBarButton {...props}>
-                <Text style={styles.middleButtonText}>UNIBIC</Text>
-              </CustomTabBarButton>
-            ),
-          }}
-        />
-        <Tab.Screen name="Reorder" component={ReorderScreen} />
-        <Tab.Screen name="Wallet" component={WalletScreen} /> */}
-        <Tab.Screen name="Fairdeals" component={HomeScreen} />
-        <Tab.Screen name="Categories" component={CategoriesScreen} />
+        <Tab.Screen name="Home" component={HomeScreen} />
+        <Tab.Screen name="Claims" component={CategoriesScreen} />
         <Tab.Screen
-          name="Unibic"
-          component={FairdealsScreen} // Placeholder, as this button doesn’t navigate
+          name="Policies"
+          component={FairdealsScreen}
           options={{
-            tabBarButton: props => (
-              <CustomTabBarButton {...props}>
-                <Text style={styles.middleButtonText}>UNIBIC</Text>
-              </CustomTabBarButton>
-            ),
+            tabBarButton: props => <CustomTabBarButton {...props} />,
           }}
         />
-        <Tab.Screen name="Reorder" component={ReorderScreen} />
-        <Tab.Screen name="Wallet" component={WalletScreen} />
+        <Tab.Screen name="Account" component={ReorderScreen} />
+        <Tab.Screen name="Help" component={WalletScreen} />
       </Tab.Navigator>
     </NavigationContainer>
   );
 };
 
 const styles = StyleSheet.create({
-  tabBar: {
-    position: 'absolute',
-    height: 80,
-    // borderTopLeftRadius: 20,
-    // borderTopRightRadius: 20,
-    elevation: 10,
-    backgroundColor: '#fff',
-    paddingBottom: 10,
-  },
   customButtonContainer: {
-    top: 4,
+    top: -16.5, // Adjust height positioning if needed
     justifyContent: 'center',
     alignItems: 'center',
-    // shadowColor: '#000',
-    // shadowOffset: { width: 0, height: 4 },
-    // shadowOpacity: 0.3,
-    // shadowRadius: 4,
   },
-  customButton: {
-    width: 50,
-    height: 50,
-    borderRadius: 40,
-    backgroundColor: '#E74C3C',
+  hexagonContainer: {
+    width: 50,  // Reduce width
+    height: 50, // Reduce height
     justifyContent: 'center',
     alignItems: 'center',
-    // elevation: 5,
-    // borderWidth: 5,
-    // borderColor: '#fff',
   },
-  middleButtonText: {
-    color: '#fff',
-    fontWeight: 'bold',
-    fontSize: 12,
+  hexagon: {
+    width: 40,  // Decrease width
+    height: 24, // Decrease height
+    backgroundColor: '#6D28D9',
+    position: 'relative',
   },
-  boldLabel: {
-    fontWeight: 'bold',
+  hexagonInner: {
+    width: 40,  // Match hexagon width
+    height: 24, // Match hexagon height
+    backgroundColor: '#6D28D9',
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  hexagonBefore: {
+    position: 'absolute',
+    top: -12, // Adjust based on height
+    left: 0,
+    width: 0,
+    height: 0,
+    borderLeftWidth: 20, // Adjust proportionally
+    borderLeftColor: 'transparent',
+    borderRightWidth: 20,
+    borderRightColor: 'transparent',
+    borderBottomWidth: 12, // Adjust proportionally
+    borderBottomColor: '#6D28D9',
+  },
+  hexagonAfter: {
+    position: 'absolute',
+    bottom: -12, // Adjust based on height
+    left: 0,
+    width: 0,
+    height: 0,
+    borderLeftWidth: 20,
+    borderLeftColor: 'transparent',
+    borderRightWidth: 20,
+    borderRightColor: 'transparent',
+    borderTopWidth: 12,
+    borderTopColor: '#6D28D9',
+  },
+  customButtonText: {
+    marginTop: 5, // Reduce space between hexagon and text
+    fontSize: 10.5, // Reduce text size
+    fontWeight: '600',
+    color: '#666',
   },
 });
+
 
 export default App;
