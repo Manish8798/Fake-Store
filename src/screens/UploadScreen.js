@@ -8,6 +8,7 @@ import {
   StyleSheet,
   ScrollView,
   TextInput,
+  Button,
 } from 'react-native';
 import {launchImageLibrary} from 'react-native-image-picker';
 import {useNavigation} from '@react-navigation/native';
@@ -82,6 +83,9 @@ const UploadScreen = () => {
           Lorem ipsum lorem ipsuma lorem ipsuma lorem ipsuma lorem ipsuma lorem
         </Text>
       </View>
+      <TouchableOpacity style={styles.button}>
+        <Text style={styles.buttonText}>PREVIEW</Text>
+      </TouchableOpacity>
     </ScrollView>
   );
 };
@@ -105,8 +109,9 @@ const styles = StyleSheet.create({
     borderStyle: 'dashed',
     borderColor: '#ccc',
     borderRadius: 10,
-    padding: 20,
+    paddingHorizontal: 20,
     alignItems: 'center',
+    paddingVertical: 40
   },
   uploadIcon: {
     // width: 50,
@@ -115,8 +120,9 @@ const styles = StyleSheet.create({
   },
   uploadText: {
     fontSize: 16,
-    fontWeight: '600',
+    fontWeight: '500',
     marginBottom: 5,
+    color: '#666',
   },
   uploadSubText: {
     color: '#666',
@@ -166,6 +172,21 @@ const styles = StyleSheet.create({
     padding: 12,
     fontSize: 16,
     backgroundColor: '#f9f9f9',
+  },
+  button: {
+    marginTop: 10,
+    backgroundColor: 'gray',
+    paddingVertical: 12,
+    paddingHorizontal: 20,
+    borderRadius: 8,
+    marginBottom: 40,
+    opacity: 0.5,
+  },
+  buttonText: {
+    color: '#fff',
+    fontSize: 16,
+    fontWeight: 'bold',
+    alignSelf: 'center',
   },
 });
 

@@ -44,7 +44,7 @@ const CropScreen = ({route}) => {
           source={require('./assets/zoom-out.png')}
           style={styles.zoomIcon}
         /> */}
-        <Icon name="zoom-out" style={styles.zoomIcon} />
+        <Icon name="zoom-out" style={styles.zoomIcon} size={24} />
         <View style={styles.sliderBar}>
           <View style={styles.sliderKnob} />
         </View>
@@ -52,7 +52,7 @@ const CropScreen = ({route}) => {
           source={require('./assets/zoom-in.png')}
           style={styles.zoomIcon}
         /> */}
-        <Icon name="zoom-in" style={styles.zoomIcon} />
+        <Icon name="zoom-in" style={styles.zoomIcon} size={24} />
       </View>
     </View>
   );
@@ -123,8 +123,8 @@ const styles = StyleSheet.create({
     marginTop: -9,
   },
   zoomIcon: {
-    width: 24,
-    height: 24,
+    // width: 24,
+    // height: 24,
     tintColor: '#fff',
   },
 });
