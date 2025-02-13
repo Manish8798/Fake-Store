@@ -1,17 +1,13 @@
-import React from "react";
-import { View, Text, Button } from "react-native";
+import React from 'react';
+import {View, Text, Button, SafeAreaView} from 'react-native';
+import UploadScreen from './UploadScreen';
 
-
-const ReorderScreen = ({ navigation }) => {
-    return (
-        <View>
-        <Text>Reorder Screen</Text>
-        <Button
-            title="Go to Home"
-            onPress={() => navigation.navigate("Home")}
-        />
-        </View>
-    );
-    };
+const ReorderScreen = ({navigation}) => {
+  return (
+    <SafeAreaView style={{flex: 1, backgroundColor: '#fff'}}>
+      <UploadScreen />
+    </SafeAreaView>
+  );
+};
 
 export default ReorderScreen;

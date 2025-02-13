@@ -1,7 +1,7 @@
 import React from 'react';
 import {View, Text, TouchableOpacity, StyleSheet, Platform} from 'react-native';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { createStackNavigator } from '@react-navigation/stack';
+import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
+import {createStackNavigator} from '@react-navigation/stack';
 import {NavigationContainer} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Feather from 'react-native-vector-icons/Feather';
@@ -11,11 +11,13 @@ import CategoriesScreen from './screens/CategoriesScreen';
 import ReorderScreen from './screens/ReorderScreen';
 import WalletScreen from './screens/WalletScreen';
 import Health from './screens/Health';
+import UploadScreen from './screens/UploadScreen';
+import CropScreen from './screens/CropScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
 
-const CustomTabBarButton = ({ children, onPress }) => (
+const CustomTabBarButton = ({children, onPress}) => (
   <TouchableOpacity style={styles.customButtonContainer} onPress={onPress}>
     <View style={styles.hexagonContainer}>
       <View style={styles.hexagon}>
@@ -32,9 +34,11 @@ const CustomTabBarButton = ({ children, onPress }) => (
 
 const HomeStack = () => {
   return (
-    <Stack.Navigator screenOptions={{ headerShown: false }}>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="HomeMain" component={HomeScreen} />
       <Stack.Screen name="Health" component={Health} />
+      <Stack.Screen name="Upload" component={UploadScreen} />
+      <Stack.Screen name="CropScreen" component={CropScreen} />
     </Stack.Navigator>
   );
 };
@@ -96,19 +100,19 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   hexagonContainer: {
-    width: 50,  // Reduce width
+    width: 50, // Reduce width
     height: 50, // Reduce height
     justifyContent: 'center',
     alignItems: 'center',
   },
   hexagon: {
-    width: 40,  // Decrease width
+    width: 40, // Decrease width
     height: 24, // Decrease height
     backgroundColor: '#6D28D9',
     position: 'relative',
   },
   hexagonInner: {
-    width: 40,  // Match hexagon width
+    width: 40, // Match hexagon width
     height: 24, // Match hexagon height
     backgroundColor: '#6D28D9',
     justifyContent: 'center',
@@ -147,6 +151,5 @@ const styles = StyleSheet.create({
     color: '#666',
   },
 });
-
 
 export default App;
