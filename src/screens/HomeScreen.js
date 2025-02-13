@@ -6,7 +6,7 @@ import {
   StyleSheet,
   SafeAreaView,
   Image,
-  TouchableOpacity
+  TouchableOpacity,
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 
@@ -58,7 +58,8 @@ const data = [
 
 const HomeScreen = ({navigation}) => {
   const renderItem = ({item}) => (
-    <TouchableOpacity onPress={() => navigation.navigate('Health', {item})}
+    <TouchableOpacity
+      onPress={() => navigation.navigate('Health', {item})}
       style={[styles.card, {backgroundColor: item.color, height: item.height}]}>
       <Icon
         name={item.icon}
@@ -110,7 +111,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 25,
     borderRadius: 20,
     justifyContent: 'space-between',
-    elevation: 5,
+    elevation: 2,
     marginVertical: 20,
     paddingTop: 20,
     paddingBottom: 2,

@@ -1,17 +1,18 @@
-import React from "react";
-import { View, Text, Button } from "react-native";
+import React from 'react';
+import {View, Text, Button, SafeAreaView} from 'react-native';
 
-
-const FairdealsScreen = ({ navigation }) => {
-    return (
-        <View>
-        <Text>Fairdeals Screen</Text>
-        <Button
-            title="Go to Home"
-            onPress={() => navigation.navigate("Home")}
-        />
-        </View>
-    );
-    };
+const FairdealsScreen = ({navigation}) => {
+  return (
+    <SafeAreaView
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+      }}>
+      <Text>Policies Screen</Text>
+    </SafeAreaView>
+  );
+};
 
 export default FairdealsScreen;

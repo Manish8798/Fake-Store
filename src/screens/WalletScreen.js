@@ -1,16 +1,17 @@
-import React from "react";
-import { View, Text, Button } from "react-native";
+import React from 'react';
+import {View, Text, Button, SafeAreaView} from 'react-native';
 
-
-const WalletScreen = ({ navigation }) => {
+const WalletScreen = ({navigation}) => {
   return (
-    <View>
-      <Text>Wallet Screen</Text>
-      <Button
-        title="Go to Home"
-        onPress={() => navigation.navigate("Home")}
-      />
-    </View>
+    <SafeAreaView
+      style={{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#fff',
+      }}>
+      <Text>Help Screen</Text>
+    </SafeAreaView>
   );
 };
 
