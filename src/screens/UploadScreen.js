@@ -11,15 +11,15 @@ import {
   Button,
 } from 'react-native';
 import {launchImageLibrary} from 'react-native-image-picker';
-import {useNavigation} from '@react-navigation/native';
+// import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome5';
 import DateInput from '../components/DateInput';
 
-const UploadScreen = () => {
+const UploadScreen = ({navigation}) => {
   const [image, setImage] = useState(null);
   const [name, setName] = useState('');
 
-  const navigation = useNavigation();
+  // const navigation = useNavigation();
 
   const selectImage = async () => {
     const options = {
@@ -29,8 +29,9 @@ const UploadScreen = () => {
     };
 
     const result = await launchImageLibrary(options);
-    console.log('image', result);
+    console.log('result', result.assets[0].uri);
     if (result.assets?.[0]?.uri) {
+      console.log('result inside', result.assets[0].uri);
       navigation.navigate('CropScreen', {imageUri: result.assets[0].uri});
     }
   };
@@ -111,7 +112,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 20,
     alignItems: 'center',
-    paddingVertical: 40
+    paddingVertical: 40,
   },
   uploadIcon: {
     // width: 50,

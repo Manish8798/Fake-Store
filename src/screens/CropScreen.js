@@ -8,18 +8,18 @@ import {
   StyleSheet,
   ScrollView,
 } from 'react-native';
-import {launchImageLibrary} from 'react-native-image-picker';
-import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
-const CropScreen = ({route}) => {
+const CropScreen = ({route, navigation}) => {
   const {imageUri} = route.params;
-  const navigation = useNavigation();
 
   return (
     <View style={styles.cropContainer}>
       <View style={styles.header}>
-        <TouchableOpacity onPress={() => navigation.goBack()}>
+        <TouchableOpacity
+          onPress={() => {
+            navigation.goBack();
+          }}>
           <Text style={styles.closeButton}>✕</Text>
         </TouchableOpacity>
         <Text style={styles.headerTitle}>Crop</Text>

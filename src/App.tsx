@@ -13,6 +13,7 @@ import WalletScreen from './screens/WalletScreen';
 import Health from './screens/Health';
 import UploadScreen from './screens/UploadScreen';
 import CropScreen from './screens/CropScreen';
+import PreviewScreen from './screens/PreviewScreen';
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator();
@@ -37,8 +38,20 @@ const HomeStack = () => {
     <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen name="HomeMain" component={HomeScreen} />
       <Stack.Screen name="Health" component={Health} />
+      {/* <Stack.Screen name="Upload" component={UploadScreen} />
+      <Stack.Screen name="CropScreen" component={CropScreen} />
+      <Stack.Screen name="Preview" component={PreviewScreen} /> */}
+    </Stack.Navigator>
+  );
+};
+
+const AccountStack = () => {
+  return (
+    <Stack.Navigator screenOptions={{headerShown: false}}>
+      <Stack.Screen name="AccountMain" component={ReorderScreen} />
       <Stack.Screen name="Upload" component={UploadScreen} />
       <Stack.Screen name="CropScreen" component={CropScreen} />
+      <Stack.Screen name="Preview" component={PreviewScreen} />
     </Stack.Navigator>
   );
 };
@@ -86,7 +99,7 @@ const App = () => {
             tabBarButton: props => <CustomTabBarButton {...props} />,
           }}
         />
-        <Tab.Screen name="Account" component={ReorderScreen} />
+        <Tab.Screen name="Account" component={AccountStack} />
         <Tab.Screen name="Help" component={WalletScreen} />
       </Tab.Navigator>
     </NavigationContainer>
